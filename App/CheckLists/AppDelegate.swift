@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  CheckLists
 //
-//  Created by yuheni on 24.11.17.
+//  Created by yuheni on 06.11.17.
 //  Copyright © 2017 yauheni. All rights reserved.
 //
 
