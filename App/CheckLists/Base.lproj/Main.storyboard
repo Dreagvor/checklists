@@ -7,6 +7,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--CheckLists-->
         <scene sceneID="VeJ-yJ-7QG">
@@ -17,22 +22,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="CheckListItem" id="hYa-x3-ekC">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="CheckListItem" id="hYa-x3-ekC">
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hYa-x3-ekC" id="kM5-Wv-g8i">
-                                    <rect key="frame" x="0.0" y="0.0" width="281" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="253" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9iN-Jn-qrM">
-                                            <rect key="frame" x="0.0" y="8" width="375" height="28"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UkZ-33-faz">
+                                            <rect key="frame" x="0.0" y="-4" width="44" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <string key="text">√ 
+</string>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="26"/>
+                                            <color key="textColor" red="0.20586209450000001" green="0.30203624229999998" blue="0.97866742230000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9iN-Jn-qrM">
+                                            <rect key="frame" x="46" y="-4" width="160" height="50"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="fzg-iu-cp1" kind="presentation" identifier="EditItem" trigger="accessoryAction" id="fax-Q7-gDE"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -43,19 +60,19 @@
                     <navigationItem key="navigationItem" title="CheckLists" id="7oW-HZ-2FN" userLabel="CheckLists">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="DGu-9O-Wcp">
                             <connections>
-                                <segue destination="fzg-iu-cp1" kind="presentation" id="9nu-0o-51U"/>
+                                <segue destination="fzg-iu-cp1" kind="presentation" identifier="AddItem" id="9nu-0o-51U"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1E6-1C-k2H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="308" y="0.44977511244377816"/>
+            <point key="canvasLocation" x="307.5" y="0.0"/>
         </scene>
         <!--Add Item-->
         <scene sceneID="xj2-oc-ikA">
             <objects>
-                <tableViewController id="Z1r-2w-oVd" customClass="AddItemViewController" customModule="CheckLists" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Z1r-2w-oVd" customClass="ItemDetailViewController" customModule="CheckLists" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="KYM-JR-Rp6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -98,19 +115,20 @@
                                 <action selector="cancel" destination="Z1r-2w-oVd" id="7yr-vn-kqg"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="VMB-BT-fMI">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="done" id="VMB-BT-fMI">
                             <connections>
                                 <action selector="done" destination="Z1r-2w-oVd" id="evO-Zl-d40"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="doneBarButton" destination="VMB-BT-fMI" id="JLs-46-iGS"/>
                         <outlet property="textField" destination="JnZ-Lc-Gob" id="nZD-lZ-0oK"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uoe-vy-was" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1846.875" y="-11.619718309859156"/>
+            <point key="canvasLocation" x="1868" y="0.0"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Hml-96-eES">
@@ -146,7 +164,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bh2-hY-tb3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1088" y="-12"/>
+            <point key="canvasLocation" x="1095" y="0.0"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="fax-Q7-gDE"/>
+    </inferredMetricsTieBreakers>
 </document>
