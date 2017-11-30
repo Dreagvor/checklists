@@ -34,6 +34,21 @@ class AllListsViewController: UITableViewController,ListDetailViewControllerDele
         let checklist = lists[indexPath.row]
         performSegue(withIdentifier: "ShowCheckList", sender: checklist)
     }
+    override func tableView(_ tableView: UITableView,commit editingStyle: UITableViewCellEditingStyle,forRowAt indexPath: IndexPath) {
+        lists.remove(at: indexPath.row)
+        let indexPaths = [indexPath]
+        tableView.deleteRows(at: indexPaths, with: .automatic)
+    }
+    override func tableView(_ tableView: UITableView,accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        let navigationController = storyboard!.instantiateViewController(
+            withIdentifier: "ListDetailNavigationController") as! UINavigationController
+        let controller = navigationController.topViewController as! ListDetailViewController
+        controller.delegate = self
+        let checklist = lists[indexPath.row]
+        controller.checklistToEdit = checklist
+        present(navigationController, animated: true, completion: nil)
+    }
+    
     func makeCell(for tableView: UITableView) -> UITableViewCell {
         let cellIdentifier = "Cell"
         if let cell =
@@ -87,9 +102,5 @@ class AllListsViewController: UITableViewController,ListDetailViewControllerDele
         }
         dismiss(animated: true, completion: nil)
     }
-    override func tableView(_ tableView: UITableView,commit editingStyle: UITableViewCellEditingStyle,forRowAt indexPath: IndexPath) {
-        lists.remove(at: indexPath.row)
-        let indexPaths = [indexPath]
-        tableView.deleteRows(at: indexPaths, with: .automatic)
-    }
+    
 }
