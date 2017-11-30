@@ -7,16 +7,19 @@
 //
 
 import UIKit
+
 protocol ListDetailViewControllerDelegate: class {
     func listDetailViewControllerDidCancel(_ controller: ListDetailViewController)
     func listDetailViewController(_ controller: ListDetailViewController,didFinishAdding checklist: CheckList)
     func listDetailViewController(_ controller: ListDetailViewController,didFinishEditing checklist: CheckList)
 }
 class ListDetailViewController: UITableViewController,UITextFieldDelegate {
+    
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
     @IBOutlet weak var textField: UITextField!
     weak var delegate: ListDetailViewControllerDelegate?
     var checklistToEdit: CheckList?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if let checklist = checklistToEdit {

@@ -26,7 +26,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hYa-x3-ekC" id="kM5-Wv-g8i">
-                                    <rect key="frame" x="0.0" y="0.0" width="253" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="253" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UkZ-33-faz">
@@ -84,7 +84,7 @@
                                         <rect key="frame" x="0.0" y="35" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hRX-Kk-gtg" id="cuQ-WW-GQk">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of the List" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nB9-mB-qp3">
@@ -94,7 +94,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                     <connections>
-                                                        <action selector="done" destination="MKG-1b-QfE" eventType="editingDidEndOnExit" id="FEA-Vr-dvW"/>
+                                                        <action selector="done" destination="MKG-1b-QfE" eventType="editingDidEndOnExit" id="ufH-JP-FRx"/>
                                                         <outlet property="delegate" destination="MKG-1b-QfE" id="F6l-PN-ap3"/>
                                                     </connections>
                                                 </textField>
@@ -112,12 +112,12 @@
                     <navigationItem key="navigationItem" title="Add CheckList" id="l48-Yf-e0z">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="S0V-CR-pDu">
                             <connections>
-                                <action selector="cancel" destination="MKG-1b-QfE" id="Mjc-tt-Q6m"/>
+                                <action selector="cancel" destination="MKG-1b-QfE" id="ceE-22-p7I"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="done" id="5pS-Tf-ZZM">
                             <connections>
-                                <action selector="done" destination="MKG-1b-QfE" id="NKo-sO-3SM"/>
+                                <action selector="done" destination="MKG-1b-QfE" id="VLf-Jp-MAz"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -161,7 +161,7 @@
                                         <rect key="frame" x="0.0" y="35" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BHg-mP-dBC" id="dRA-qy-dpO">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of the Item" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JnZ-Lc-Gob">
@@ -228,7 +228,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="mN1-ky-oYK" kind="show" identifier="ShowCheckList" id="1Jk-jn-qao"/>
+                        <segue destination="mN1-ky-oYK" kind="show" identifier="ShowCheckList" id="Mgz-tl-KKi"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Us-xu-Mqk" userLabel="First Responder" sceneMemberID="firstResponder"/>

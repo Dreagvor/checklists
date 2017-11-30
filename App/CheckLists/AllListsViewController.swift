@@ -9,7 +9,7 @@
 import UIKit
 
 class AllListsViewController: UITableViewController,ListDetailViewControllerDelegate {
-    
+    var lists: [CheckList]
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -23,7 +23,6 @@ class AllListsViewController: UITableViewController,ListDetailViewControllerDele
         return lists.count
     }
 
-
     override func tableView(_ tableView: UITableView,cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = makeCell(for: tableView)
         let checklist = lists[indexPath.row]
@@ -31,7 +30,10 @@ class AllListsViewController: UITableViewController,ListDetailViewControllerDele
         cell.accessoryType = .detailDisclosureButton
         return cell
     }
-    
+    override func tableView(_ tableView: UITableView,didSelectRowAt indexPath: IndexPath) {
+        let checklist = lists[indexPath.row]
+        performSegue(withIdentifier: "ShowCheckList", sender: checklist)
+    }
     func makeCell(for tableView: UITableView) -> UITableViewCell {
         let cellIdentifier = "Cell"
         if let cell =
@@ -41,11 +43,7 @@ class AllListsViewController: UITableViewController,ListDetailViewControllerDele
             return UITableViewCell(style: .default, reuseIdentifier: cellIdentifier)
         }
     }
-    override func tableView(_ tableView: UITableView,didSelectRowAt indexPath: IndexPath) {
-        let checklist = lists[indexPath.row]
-        performSegue(withIdentifier: "ShowCheckList", sender: checklist)
-    }
-    var lists: [CheckList]
+   
     required init?(coder aDecoder: NSCoder) {
         lists = [CheckList]()
         super.init(coder: aDecoder)
@@ -62,9 +60,8 @@ class AllListsViewController: UITableViewController,ListDetailViewControllerDele
         if segue.identifier == "ShowCheckList" {
             let controller = segue.destination as! CheckListViewController
             controller.checklist = sender as! CheckList
-        } else if segue.identifier == "AddChecklist" {
-            let navigationController = segue.destination
-                as! UINavigationController
+        } else if segue.identifier == "AddCheckList" {
+            let navigationController = segue.destination as! UINavigationController
             let controller = navigationController.topViewController as! ListDetailViewController
             controller.delegate = self
             controller.checklistToEdit = nil
