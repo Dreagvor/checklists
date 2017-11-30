@@ -62,15 +62,9 @@ class AllListsViewController: UITableViewController,ListDetailViewControllerDele
     required init?(coder aDecoder: NSCoder) {
         lists = [CheckList]()
         super.init(coder: aDecoder)
-        var list = CheckList(name: "Birthdays")
-        lists.append(list)
-        list = CheckList(name: "Groceries")
-        lists.append(list)
-        list = CheckList(name: "Cool Apps")
-        lists.append(list)
-        list = CheckList(name: "To Do")
-        lists.append(list)
+        loadCheckLists()
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowCheckList" {
             let controller = segue.destination as! CheckListViewController
@@ -102,5 +96,26 @@ class AllListsViewController: UITableViewController,ListDetailViewControllerDele
         }
         dismiss(animated: true, completion: nil)
     }
-    
+    func documentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory,in: .userDomainMask)
+        return paths[0]
+    }
+    func dataFilePath() -> URL {
+        return documentsDirectory().appendingPathComponent("Checklists.plist")
+    }
+    func saveCheckLists() {
+        let data = NSMutableData()
+        let archiver = NSKeyedArchiver(forWritingWith: data)
+        archiver.encode(lists, forKey: "CheckLists")
+        archiver.finishEncoding()
+        data.write(to: dataFilePath(), atomically: true)
+    }
+    func loadCheckLists() {
+        let path = dataFilePath()
+        if let data = try? Data(contentsOf: path) {
+            let unarchiver = NSKeyedUnarchiver(forReadingWith: data)
+            lists = unarchiver.decodeObject(forKey: "CheckLists") as! [CheckList]
+            unarchiver.finishDecoding()
+        }
+    }
 }
