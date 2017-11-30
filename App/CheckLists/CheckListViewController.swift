@@ -10,14 +10,13 @@ import UIKit
 
 class CheckListViewController: UITableViewController, ItemDetailViewControllerDelegate {
   
-   
-    
+    var checklist: CheckList!
     var items: [CheckListItem]
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        title = checklist.name
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,7 +44,7 @@ class CheckListViewController: UITableViewController, ItemDetailViewControllerDe
             configureCheckmark(for: cell, with: item)
         }
         tableView.deselectRow(at: indexPath, animated: true)
-        saveChecklistItems()
+        saveCheckListItems()
     }
     
     override func tableView(_ tableView: UITableView,commit editingStyle: UITableViewCellEditingStyle,forRowAt indexPath: IndexPath) {
@@ -53,7 +52,7 @@ class CheckListViewController: UITableViewController, ItemDetailViewControllerDe
         
         let indexPaths = [indexPath]
         tableView.deleteRows(at: indexPaths, with: .automatic)
-        saveChecklistItems()
+        saveCheckListItems()
     }
     
     func configureCheckmark(for cell: UITableViewCell,
@@ -74,34 +73,8 @@ class CheckListViewController: UITableViewController, ItemDetailViewControllerDe
     
     required init?(coder aDecoder: NSCoder) {
         items = [CheckListItem]()
-        let row0item = CheckListItem()
-        row0item.text = "делать тритпо"
-        row0item.checked = false
-        items.append(row0item)
-        
-        let row1item = CheckListItem()
-        row1item.text = "купить хлеб"
-        row1item.checked = true
-        items.append(row1item)
-        
-        let row2item = CheckListItem()
-        row2item.text = "учить айос"
-        row2item.checked = true
-        items.append(row2item)
-        
-        let row3item = CheckListItem()
-        row3item.text = "сходить в зал"
-        row3item.checked = false
-        items.append(row3item)
-        
-        let row4item = CheckListItem()
-        row4item.text = "забрать посылку"
-        row4item.checked = true
-        items.append(row4item)
-        
         super.init(coder: aDecoder)
-        print("Documents folder is \(documentsDirectory())")
-        print("Data file path is \(dataFilePath())")
+        loadCheckListItems()
     }
    
     func itemDetailViewControllerDidCancel(_ controller: ItemDetailViewController) {
@@ -114,7 +87,7 @@ class CheckListViewController: UITableViewController, ItemDetailViewControllerDe
         let indexPaths = [indexPath]
         tableView.insertRows(at: indexPaths, with: .automatic)
         dismiss(animated: true, completion: nil)
-        saveChecklistItems()
+        saveCheckListItems()
     }
     func itemDetailViewController(_ controller: ItemDetailViewController, didFinishEditing item: CheckListItem) {
         if let index = items.index(of: item) {
@@ -124,7 +97,7 @@ class CheckListViewController: UITableViewController, ItemDetailViewControllerDe
             }
         }
         dismiss(animated: true, completion: nil)
-        saveChecklistItems()
+        saveCheckListItems()
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AddItem" {
@@ -148,14 +121,21 @@ class CheckListViewController: UITableViewController, ItemDetailViewControllerDe
     func dataFilePath() -> URL {
         return documentsDirectory().appendingPathComponent("CheckLists.plist")
     }
-    func saveChecklistItems() {
+    func saveCheckListItems() {
         let data = NSMutableData()
         let archiver = NSKeyedArchiver(forWritingWith: data)
         archiver.encode(items, forKey: "CheckListItems")
         archiver.finishEncoding()
         data.write(to: dataFilePath(), atomically: true)
     }
-    
+    func loadCheckListItems() {
+        let path = dataFilePath()
+        if let data = try? Data(contentsOf: path) {
+            let unarchiver = NSKeyedUnarchiver(forReadingWith: data)
+            items = unarchiver.decodeObject(forKey: "CheckListItems") as! [CheckListItem]
+            unarchiver.finishDecoding()
+        }
+    }
 }
 
 
