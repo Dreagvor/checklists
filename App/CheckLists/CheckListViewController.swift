@@ -22,12 +22,10 @@ class CheckListViewController: UITableViewController, ItemDetailViewControllerDe
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    override func tableView(_ tableView: UITableView,
-                            numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return checklist.items.count
     }
-    override func tableView(_ tableView: UITableView,
-                            cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: "CheckListItem", for: indexPath)
         let item = checklist.items[indexPath.row]
@@ -36,7 +34,7 @@ class CheckListViewController: UITableViewController, ItemDetailViewControllerDe
         return cell
     }
     
-    override func tableView(_ tableView: UITableView,didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) {
             let item = checklist.items[indexPath.row]
             item.toggleChecked()
@@ -47,13 +45,11 @@ class CheckListViewController: UITableViewController, ItemDetailViewControllerDe
     
     override func tableView(_ tableView: UITableView,commit editingStyle: UITableViewCellEditingStyle,forRowAt indexPath: IndexPath) {
         checklist.items.remove(at: indexPath.row)
-        
         let indexPaths = [indexPath]
         tableView.deleteRows(at: indexPaths, with: .automatic)
     }
     
-    func configureCheckmark(for cell: UITableViewCell,
-                            with item: CheckListItem) {
+    func configureCheckmark(for cell: UITableViewCell, with item: CheckListItem) {
         let label = cell.viewWithTag(1001) as! UILabel
         if item.checked {
             label.text = "√"
@@ -62,8 +58,7 @@ class CheckListViewController: UITableViewController, ItemDetailViewControllerDe
         }
     }
     
-    func configureText(for cell: UITableViewCell,
-                       with item: CheckListItem) {
+    func configureText(for cell: UITableViewCell, with item: CheckListItem) {
         let label = cell.viewWithTag(1000) as! UILabel
         label.text = item.text
     }
