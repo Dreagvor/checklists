@@ -24,6 +24,7 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var datePickerCell: UITableViewCell!
     
+    var itemToEdit: CheckListItem?
     weak var delegate: ItemDetailViewControllerDelegate?
     var datePickerVisible = false
     var dueDate = Date()
@@ -146,8 +147,6 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
             delegate?.itemDetailViewController(self, didFinishAdding: item)
         }
     }
-    
-    var itemToEdit: CheckListItem?
     
     func updateDueDateLabel() {
         let formatter = DateFormatter()

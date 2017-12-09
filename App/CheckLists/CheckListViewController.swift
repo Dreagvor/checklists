@@ -17,17 +17,12 @@ class CheckListViewController: UITableViewController, ItemDetailViewControllerDe
         title = checklist.name
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return checklist.items.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: "CheckListItem", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CheckListItem", for: indexPath)
         let item = checklist.items[indexPath.row]
         configureText(for: cell, with: item)
         configureCheckmark(for: cell, with: item)
@@ -60,7 +55,7 @@ class CheckListViewController: UITableViewController, ItemDetailViewControllerDe
     
     func configureText(for cell: UITableViewCell, with item: CheckListItem) {
         let label = cell.viewWithTag(1000) as! UILabel
-        label.text = "\(item.itemID): \(item.text)"
+        label.text = "\(item.text)"
     }
    
     func itemDetailViewControllerDidCancel(_ controller: ItemDetailViewController) {
@@ -100,6 +95,10 @@ class CheckListViewController: UITableViewController, ItemDetailViewControllerDe
                 
             }
         }
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
 }
 

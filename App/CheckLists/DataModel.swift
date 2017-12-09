@@ -12,6 +12,12 @@ class DataModel {
     
     var lists = [CheckList]()
     
+    init() {
+        loadCheckLists()
+        registerDefaults()
+        handleFirstTime()
+    }
+    
     var indexOfSelectedCheckList: Int {
         get {
             return UserDefaults.standard.integer(forKey: "CheckListIndex")
@@ -54,13 +60,6 @@ class DataModel {
             unarchiver.finishDecoding()
             sortCheckLists()
         }
-    }
-    
-    init() {
-        loadCheckLists()
-        registerDefaults()
-        handleFirstTime()
-        
     }
     
     func registerDefaults() {
