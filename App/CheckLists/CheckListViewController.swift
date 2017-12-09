@@ -12,7 +12,6 @@ class CheckListViewController: UITableViewController, ItemDetailViewControllerDe
   
     var checklist: CheckList!
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = checklist.name
@@ -20,11 +19,12 @@ class CheckListViewController: UITableViewController, ItemDetailViewControllerDe
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return checklist.items.count
     }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: "CheckListItem", for: indexPath)
@@ -66,6 +66,7 @@ class CheckListViewController: UITableViewController, ItemDetailViewControllerDe
     func itemDetailViewControllerDidCancel(_ controller: ItemDetailViewController) {
         dismiss(animated: true, completion: nil)
     }
+    
     func itemDetailViewController(_ controller: ItemDetailViewController, didFinishAdding item: CheckListItem){
         let newRowIndex = checklist.items.count
         checklist.items.append(item)
@@ -74,6 +75,7 @@ class CheckListViewController: UITableViewController, ItemDetailViewControllerDe
         tableView.insertRows(at: indexPaths, with: .automatic)
         dismiss(animated: true, completion: nil)
     }
+    
     func itemDetailViewController(_ controller: ItemDetailViewController, didFinishEditing item: CheckListItem) {
         if let index = checklist.items.index(of: item) {
             let indexPath = IndexPath(row: index, section: 0)
@@ -83,6 +85,7 @@ class CheckListViewController: UITableViewController, ItemDetailViewControllerDe
         }
         dismiss(animated: true, completion: nil)
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AddItem" {
             let navigationController = segue.destination as! UINavigationController
@@ -98,7 +101,6 @@ class CheckListViewController: UITableViewController, ItemDetailViewControllerDe
             }
         }
     }
-    
 }
 
 

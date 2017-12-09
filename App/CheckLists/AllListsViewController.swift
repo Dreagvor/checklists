@@ -40,16 +40,19 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
         cell.imageView!.image = UIImage(named: checklist.iconName)
         return cell
     }
+    
     override func tableView(_ tableView: UITableView,didSelectRowAt indexPath: IndexPath) {
         dataModel.indexOfSelectedCheckList = indexPath.row
         let checklist = dataModel.lists[indexPath.row]
         performSegue(withIdentifier: "ShowCheckList", sender: checklist)
     }
+    
     override func tableView(_ tableView: UITableView,commit editingStyle: UITableViewCellEditingStyle,forRowAt indexPath: IndexPath) {
         dataModel.lists.remove(at: indexPath.row)
         let indexPaths = [indexPath]
         tableView.deleteRows(at: indexPaths, with: .automatic)
     }
+    
     override func tableView(_ tableView: UITableView,accessoryButtonTappedForRowWith indexPath: IndexPath) {
         let navigationController = storyboard!.instantiateViewController(
             withIdentifier: "ListDetailNavigationController") as! UINavigationController
@@ -81,34 +84,40 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
             controller.checklistToEdit = nil
         }
     }
+    
     func listDetailViewControllerDidCancel(_ controller: ListDetailViewController) {
         dismiss(animated: true, completion: nil)
     }
+    
     func listDetailViewController(_ controller: ListDetailViewController,didFinishAdding checklist: CheckList) {
         dataModel.lists.append(checklist)
         dataModel.sortCheckLists()
         tableView.reloadData()
         dismiss(animated: true, completion: nil)
     }
+    
     func listDetailViewController(_ controller: ListDetailViewController,didFinishEditing checklist: CheckList) {
         dataModel.sortCheckLists()
         tableView.reloadData()
         dismiss(animated: true, completion: nil)
     }
+    
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         if viewController === self {
             dataModel.indexOfSelectedCheckList = -1
         }
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         navigationController?.delegate = self
-         let index = dataModel.indexOfSelectedCheckList
+        let index = dataModel.indexOfSelectedCheckList
         if index >= 0 && index < dataModel.lists.count {
             let checklist = dataModel.lists[index]
             performSegue(withIdentifier: "ShowCheckList", sender: checklist)
         }
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()

@@ -16,9 +16,10 @@ import UIKit
 
 class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
    
-    override func tableView(_ tableView: UITableView,willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         return nil
     }
+    
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
     
@@ -26,19 +27,19 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
         super.viewWillAppear(animated)
         textField.becomeFirstResponder()
     }
-    func textField(_ textField: UITextField,
-                   shouldChangeCharactersIn range: NSRange,
-                   replacementString string: String) -> Bool {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let oldText = textField.text! as NSString
         let newText = oldText.replacingCharacters(in: range, with: string) as NSString
         doneBarButton.isEnabled = (newText.length > 0)
-        
         return true
     }
+    
     weak var delegate: ItemDetailViewControllerDelegate?
+    
     @IBAction func cancel() {
         delegate?.itemDetailViewControllerDidCancel(self)
     }
+    
     @IBAction func done() {
         if let item = itemToEdit {
             item.text = textField.text!
@@ -50,7 +51,9 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
             delegate?.itemDetailViewController(self, didFinishAdding: item)
         }
     }
+    
     var itemToEdit: CheckListItem?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if let item = itemToEdit {
