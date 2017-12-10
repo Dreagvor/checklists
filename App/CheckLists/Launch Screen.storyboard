@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch" translatesAutoresizingMaskIntoConstraints="NO" id="hGx-sO-ZrA">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <color key="tintColor" red="0.99722537639999997" green="0.99116612309999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" image="YES" summaryElement="YES"/>
+                                </accessibility>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CheckLists" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="f8F-ZO-MZd">
+                                <rect key="frame" x="89.666666666666686" y="176.33333333333334" width="235" height="56"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="45"/>
+                                <color key="textColor" red="0.99722537639999997" green="0.99116612309999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="highlightedColor" red="0.99722537639999997" green="0.99116612309999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="shadowColor" red="0.26042403980000001" green="1" blue="0.95886690289999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <size key="shadowOffset" width="2" height="2"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright © 2017 yauheni. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="RUE-tG-Vjh">
+                                <rect key="frame" x="7.6666666666666572" y="676.66666666666663" width="399" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.99722537639999997" green="0.99116612309999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="highlightedColor" red="0.99722537639999997" green="0.99116612309999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="shadowColor" red="0.26042403980000001" green="1" blue="0.95886690289999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <size key="shadowOffset" width="0.0" height="0.0"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="hGx-sO-ZrA" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" id="3Fd-3S-raY"/>
+                            <constraint firstItem="hGx-sO-ZrA" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="6eu-eE-5KT"/>
+                            <constraint firstItem="hGx-sO-ZrA" firstAttribute="trailing" secondItem="Bcu-3y-fUS" secondAttribute="trailing" id="8Sx-ya-tEm"/>
+                            <constraint firstItem="RUE-tG-Vjh" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="7.6699999999999999" id="YdC-3f-OW7"/>
+                            <constraint firstItem="f8F-ZO-MZd" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="89.670000000000002" id="Z2a-8n-wnX"/>
+                            <constraint firstItem="hGx-sO-ZrA" firstAttribute="bottom" secondItem="RUE-tG-Vjh" secondAttribute="bottom" multiplier="1.05" id="eeb-7U-X4Q"/>
+                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="f8F-ZO-MZd" secondAttribute="trailing" constant="89.329999999999998" id="pqd-8p-Lr2"/>
+                            <constraint firstAttribute="centerY" secondItem="f8F-ZO-MZd" secondAttribute="centerY" multiplier="1.8" id="sTi-YL-pUI"/>
+                            <constraint firstItem="hGx-sO-ZrA" firstAttribute="bottom" secondItem="Bcu-3y-fUS" secondAttribute="bottom" id="saE-r5-h2F"/>
+                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="RUE-tG-Vjh" secondAttribute="trailing" constant="7.3300000000000001" id="xqk-ai-DNu"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52.173913043478265" y="374.18478260869568"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="launch" width="449" height="786"/>
+    </resources>
+</document>
